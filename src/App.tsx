@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { getMovies } from "../src/services/movies.service.ts";
+import { Movie } from "./types/types.ts";
+import Sidebar from "./components/Sidebar.tsx";
+import Header from "./components/Header.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    getMovies()
+      .then((data: Movie[]) => {
+        console.log("MOVIES: ", data);
+        setMovies(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main>
+      <Sidebar />
+      <div className="header">
+        <Header />
+        <div className="main-grid">
+          {movies?.map((movie: Movie) => (
+            <div className="main-media">
+              <a href="#" className="main__media-thumb">
+                <img
+                  className="main__media-img"
+                  src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+                  alt=""
+                />
+              </a>
+              <p className="main__media-titulo">{movie.title}</p>
+              <p className="main__media-fecha">
+                {new Date(movie.release_date).getFullYear()}
+              </p>
+            </div>
+          ))}
+        </div>
+        {/* <footer className="footer">Hecho por Maricela Fuentes</footer> */}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;
