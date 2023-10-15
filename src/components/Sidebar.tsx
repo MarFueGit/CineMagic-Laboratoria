@@ -3,8 +3,8 @@ import React from "react";
 export default function Sidebar() {
   return (
     <div className="sidebar-generos">
-      <h3 className="sidebar-title">Generos</h3>
-      <div className="contenedor-generos" id="filtro-generos">
+      <h3 className="sidebar-title">🍿Generos</h3>
+      <div className="contenedor-generos" id="filtroGeneros">
         <button className="btn">Acción</button>
         <button className="btn">Aventura</button>
         <button className="btn">Animación</button>
@@ -23,7 +23,7 @@ export default function Sidebar() {
         <input
           className="sidebar-input"
           type="number"
-          id="años-min"
+          id="añosMin"
           min="1900"
           max="2023"
           maxLength={4}
@@ -33,7 +33,7 @@ export default function Sidebar() {
         <input
           className="sidebar-input"
           type="number"
-          id="años-min"
+          id="añosMin"
           min="1900"
           max="2023"
           maxLength={4}
