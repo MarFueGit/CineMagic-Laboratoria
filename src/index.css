@@ -1,12 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  background-color: rgb(24, 40, 66);
-}
-
+/* Estilos de sidebar */
 .sidebar-generos {
   height: 100vh;
   width: 16rem;
@@ -34,6 +26,10 @@ body {
   color: #fff;
   background-color: rgb(24, 40, 66);
   border: none;
+}
+.active:hover{
+background-color: yellow;
+color: black;
 }
 .sidebar-año {
   text-align: center;
@@ -84,6 +80,8 @@ button {
   cursor: pointer;
   border-radius: 6px;
 }
+/* ------------------Termina estilos de sidebar ----------------------------*/
+/* ----------Empieza estilos del Header -----------------------------*/
 .header {
   display: flex;
   flex-direction: column;
@@ -130,6 +128,8 @@ button:hover {
   color: white;
   border: none;
 }
+/* -----------------------Termina estilos del header -------------------*/
+/* ------------Empieza estilos de la seccion principal -------------*/
 .grid-movie{
   flex-grow: 0;
   margin-top: 100px;
@@ -146,6 +146,12 @@ button:hover {
   color: #fff;
   text-align: center;
 }
+.img-movie {
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+/* ------------Termina estilos de la seccion principal ---------------*/
+/* -------Empieza estilos de la paginacion -----------------*/
 .paginacion {
   display: flex;
   justify-content: end;
@@ -166,8 +172,6 @@ button:hover {
 .fa-solid {
  margin: 10px;
 }
-.img-movie {
-  border-radius: 10px;
-  border: 1px solid yellow;
-}
+/* ---------------------Termina estilos de la paginacion -------------------------*/
+
 

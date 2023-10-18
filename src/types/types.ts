@@ -1,3 +1,4 @@
+//Tipo de datos "Movie"se utiliza para representar informacion sobre una pelicula en Typescript.
 export type Movie = {
   adult: boolean;
   backdrop_path: string;
@@ -8,8 +9,8 @@ export type Movie = {
   overview: string;
   popularity: number;
   poster_path: string;
-  release_date: number;
-  title: number;
+  release_date: string;
+  title: string;
   video: boolean;
   vote_average: number;
   vote_count: number;

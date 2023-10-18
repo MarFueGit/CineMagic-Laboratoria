@@ -1,6 +1,9 @@
-import React, {Dispatch, SetStateAction} from "react";
+import  {Dispatch, SetStateAction} from "react";
 
+// Define una interfaz llamada paginationProps, especifica los tipos de propiedades que se esperan en un componente.
 interface PaginationProps {
+  /* esto nos indica que se espera una propiedad llamada setPage que es una funcion de despacho(Dispatch)
+  que toma una accion de cambio de estado y devuelve un numero*/
     setPage: Dispatch<SetStateAction<number>>;
     page: number;
   }

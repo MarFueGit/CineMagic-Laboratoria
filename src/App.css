@@ -1,0 +1,10 @@
+/* Estilos generales de la aplicacion */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: rgb(24, 40, 66);
+    font-family: 'Montserrat', sans-serif;
+  }
