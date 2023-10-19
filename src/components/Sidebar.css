@@ -1,0 +1,100 @@
+.sidebar-generos {
+    height: 100vh;
+    width: 16rem;
+    position: fixed;
+  }
+  .sidebar-title {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 8px;
+    font-size: 25px;
+    color: #fff;
+  }
+  .contenedor-generos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    color: #fff;
+    margin-top: 60px;
+    margin-left: 10px;
+  }
+  .contenedor-generos button {
+    font-size: 0.9rem;
+    width: 90px;
+    padding: 3px;
+    color: #fff;
+    background-color: rgb(24, 40, 66);
+    border: none;
+  }
+  .active:hover {
+    background-color: yellow;
+    color: black;
+    transform: scale(1.1);
+  }
+  .sidebar-año {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 50px;
+    font-size: 25px;
+    color: #fff;
+  }
+  .container-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .sidebar-input {
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+  }
+  
+  span {
+    color: #fff;
+    margin-left: 5px;
+  }
+  .sidebar-buscar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar-buscar button {
+    background-color: yellow;
+    border: none;
+    width: 150px;
+    height: 30px;
+    border-radius: 6px;
+    margin-top: 50px;
+    font-size: 16px;
+  }
+  button {
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  .sidebar-ordenar {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  select {
+    width: 150px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+  }
+  select:hover {
+    background-color: yellow;
+    color: black;
+    transform: scale(1.1);
+  }

@@ -1,4 +1,5 @@
 import { Movie } from "../types/types";
+import "./SeccionPrincipal.css";
 
 interface SeccionPrincipalProps {
   movies: Movie[];

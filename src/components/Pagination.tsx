@@ -1,4 +1,5 @@
 import  {Dispatch, SetStateAction} from "react";
+import "./Pagination.css";
 
 // Define una interfaz llamada paginationProps, especifica los tipos de propiedades que se esperan en un componente.
 interface PaginationProps {

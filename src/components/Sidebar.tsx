@@ -1,20 +1,30 @@
+import { useEffect, useState } from "react";
+import { Genre } from "../types/types";
+import { getGenres } from "../services/genres.service.ts";
+import "./Sidebar.css";
+
 export default function Sidebar() {
+  // Aqui mandamos a llamar los generos
+  const [genres, setGenres] = useState<Genre[]>([]); //hook de estado (useState) para guardar  el array de generos
+  // Ahora lo mando a llamar
+  useEffect(() => {
+    //Hoot de efecto (useEffect)
+    getGenres()
+      .then((data: Genre[]) => {
+        console.log("GENEROS: ", data);
+        setGenres(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
   return (
     <div className="sidebar-generos">
       <h3 className="sidebar-title">🍿Generos</h3>
       <div className="contenedor-generos" id="filtroGeneros">
-        <button className="btn active" >Acción</button>
-        <button className="btn active">Aventura</button>
-        <button className="btn active">Animación</button>
-        <button className="btn active">Comedia</button>
-        <button className="btn active">Crimén</button>
-        <button className="btn active">Drama</button>
-        <button className="btn active">Fantasia</button>
-        <button className="btn active">Terror</button>
-        <button className="btn active">Misterio</button>
-        <button className="btn active">Romances</button>
-        <button className="btn active">Suspenso</button>
-        <button className="btn active">Familia</button>
+        {genres?.map((genre: Genre, i: number) => (
+          <button className="btn active" key={i}>
+            {genre.name}
+          </button>
+        ))}
       </div>
       <h3 className="sidebar-año">Años</h3>
       <div className="container-inputs">
@@ -40,6 +50,13 @@ export default function Sidebar() {
       </div>
       <div className="sidebar-buscar" id="btn-buscar">
         <button className="btn btn--100 btn--amarillo">Buscar</button>
+      </div>
+      <div className="sidebar-ordenar ">
+        <select name="ordenar" id="ordenar" >
+        <option value="1" selected> Ordenar por</option>
+          <option value="2">Ascendente</option>
+          <option value="3">Descendente</option>
+        </select>
       </div>
     </div>
   );

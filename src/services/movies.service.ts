@@ -6,7 +6,7 @@ export const getMovies = (page: number): Promise<Movie[]> =>
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMzhhOTk0NjJlNGMyMWQ2NDkzN2ZiZTNiM2Q5MGY0NCIsInN1YiI6IjYyYTc1YTE3ZWIxNGZhMDlkZGI3M2FlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.i-Rgg9jxaTQfTR4PnlC9tdOp5wEsFlJcu8vIV6L-xbE"
+        Authorization: "Bearer "
       }
     };
 
@@ -18,5 +18,3 @@ export const getMovies = (page: number): Promise<Movie[]> =>
       .then((response) => resolve(response?.results))
       .catch((err) => reject(err));
   });
-
-  //A ver, que quieres checar, escribeme aca

@@ -15,3 +15,9 @@ export type Movie = {
   vote_average: number;
   vote_count: number;
 };
+
+// Creamos el tipo de dato Genre, para representar un Genre que viene de la api
+export type Genre = {
+  id: number;
+  name: string;
+};
