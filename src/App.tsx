@@ -17,21 +17,22 @@ function App() {
   //Como al iniciar la aplicacion, no tenemos ningun filtro, lo ponemos como ""
   useEffect(() => {
     //Hoot de efecto (useEffect)
-    getMovies(page)
+    getMovies(page, gender)
       .then((data: Movie[]) => {
         console.log("MOVIES: ", data);
+        console.log("gender:", gender);
         setMovies(data);
       })
       .catch((error) => console.error(error));
-  }, [page]);
+  }, [page, gender]);
   /* Renderizamos una estructura de elemntos Html y componentes de react para representar la interfaz de la aplicacion*/
   return (
     <main>
-      <Sidebar />
+      <Sidebar setGender={setGender} />
       <div className="header">
         <Header />
         <SeccionPrincipal movies={movies} />
-        <Pagination setPage={setPage} page={page} />
+        <Pagination setPage={setPage} page={page}/>
       </div>
     </main>
   );

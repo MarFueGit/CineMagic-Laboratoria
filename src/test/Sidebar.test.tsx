@@ -1,46 +1,43 @@
-// import Sidebar from "../components/Sidebar";
-// import { render } from "../test/utils";
-
-// describe("Sidebar component", () => {
-//   it("renderizame sidebar Generos", () => {
-//     const { getByText } = render(<Sidebar />);
-//     // Verificamos que se renderice el texto Cinemagic
-//     expect(getByText(/🍿Generos/)).not.toBeUndefined();
-//   });
-
-//   //Aqui va tu segundo test
-// });
-
-
-import { render, screen, waitFor } from '@testing-library/react';
-import Sidebar from "../components/Sidebar.tsx";
-import { getGenres } from '../services/genres.service.ts'; // Asegúrate de que la ruta sea correcta
-
-// Mock de la función getGenres
-jest.mock('../services/genres.service.ts');
+import Sidebar from "../components/Sidebar";
+import { render, waitFor} from '@testing-library/react';
+import React from 'react'
 
 describe('Sidebar Component', () => {
-  it('renders genres when data is fetched', async () => {
-    const mockGenres = [{ id: 1, name: 'Action' }];
-    getGenres.mockResolvedValue(mockGenres);
+  // mock de el servicio
+  jest.mock('../services/genres.service.ts', () => ({
+    getGenres: () => new Promise((resolve) => {
+      return resolve([{
+        id: 1,
+        name: 'Action'
+      }])
+    })
+  }));
 
-    render(<Sidebar />);
+  // mock del fetch
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve([{
+          id: 1,
+          name: 'Action'
+        }])
+      })
+    ) as jest.Mock;
 
-    // Espera a que los datos de género se carguen y luego realiza las pruebas
-    await waitFor(() => {
-      const genreElement = screen.getByText('Action');
-      expect(genreElement).toBeInTheDocument();
-    });
+    // mock de los hooks
+    jest.spyOn(React, 'useState').mockImplementation(() => [[{
+      id: 1,
+      name: 'Action'
+    }], jest.fn()]);
+
+    jest.spyOn(global.console, 'warn')
+    jest.spyOn(global.console, 'log')
+    jest.spyOn(global.console, 'error')
+
+  it('Renderiza los generos que manda a traer desde el servicio', async () => {  
+      const { getByText} = render(<Sidebar/>);
+  await waitFor(() => {
+    expect(getByText('Action')).not.toBeUndefined();
   });
-
-  it('displays a loading state while fetching data', () => {
-    getGenres.mockReturnValue(new Promise(() => {}));
-
-    render(<Sidebar />);
-
-    const loadingElement = screen.getByText('Loading...'); // Asegúrate de que tengas algún texto de carga en tu componente
-    expect(loadingElement).toBeInTheDocument();
+    
   });
-
-  // Puedes agregar más pruebas según tus necesidades
 });

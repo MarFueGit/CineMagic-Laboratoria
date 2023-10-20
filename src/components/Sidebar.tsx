@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Genre } from "../types/types";
 import { getGenres } from "../services/genres.service.ts";
 import "./Sidebar.css";
 
-export default function Sidebar() {
+interface SidebarProps {
+  setGender: Dispatch<SetStateAction<string>>;
+}
+
+export default function Sidebar({ setGender }: SidebarProps) {
   // Aqui mandamos a llamar los generos
   const [genres, setGenres] = useState<Genre[]>([]); //hook de estado (useState) para guardar  el array de generos
   // Ahora lo mando a llamar
@@ -21,7 +25,13 @@ export default function Sidebar() {
       <h3 className="sidebar-title">🍿Generos</h3>
       <div className="contenedor-generos" id="filtroGeneros">
         {genres?.map((genre: Genre, i: number) => (
-          <button className="btn active" key={i}>
+          <button
+            className="btn active"
+            onClick={() => {
+              setGender(genre.id);
+            }}
+            key={i}
+          >
             {genre.name}
           </button>
         ))}
@@ -52,8 +62,8 @@ export default function Sidebar() {
         <button className="btn btn--100 btn--amarillo">Buscar</button>
       </div>
       <div className="sidebar-ordenar ">
-        <select name="ordenar" id="ordenar" >
-        <option value="1" selected> Ordenar por</option>
+        <select name="ordenar" id="ordenar" onChange={() => {}}>
+          <option value="1"> Ordenar por</option>
           <option value="2">Ascendente</option>
           <option value="3">Descendente</option>
         </select>
