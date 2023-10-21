@@ -4,10 +4,10 @@ import { getGenres } from "../services/genres.service.ts";
 import "./Sidebar.css";
 
 interface SidebarProps {
-  setGender: Dispatch<SetStateAction<string>>;
+  setGender: Dispatch<SetStateAction<number>>;
+  gender: number;
 }
-
-export default function Sidebar({ setGender }: SidebarProps) {
+export default function Sidebar({ setGender, gender }: SidebarProps) {
   // Aqui mandamos a llamar los generos
   const [genres, setGenres] = useState<Genre[]>([]); //hook de estado (useState) para guardar  el array de generos
   // Ahora lo mando a llamar
@@ -26,7 +26,7 @@ export default function Sidebar({ setGender }: SidebarProps) {
       <div className="contenedor-generos" id="filtroGeneros">
         {genres?.map((genre: Genre, i: number) => (
           <button
-            className="btn active"
+            className={genre.id === gender ? "btn active" : "btn"}
             onClick={() => {
               setGender(genre.id);
             }}

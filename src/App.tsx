@@ -13,7 +13,7 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([]); //hook de estado (useState) para guardar las movies de la API
   const [page, setPage] = useState<number>(1); // hook de estado (useState) para tener el control de la pagina
   // haremos un hook para guardar y controlar el genero que el usuario de click
-  const [gender, setGender] = useState<string>(""); //hook de estado (useSTate) para controlar el genero
+  const [gender, setGender] = useState<number>(0); //hook de estado (useSTate) para controlar el genero
   //Como al iniciar la aplicacion, no tenemos ningun filtro, lo ponemos como ""
   useEffect(() => {
     //Hoot de efecto (useEffect)
@@ -28,11 +28,11 @@ function App() {
   /* Renderizamos una estructura de elemntos Html y componentes de react para representar la interfaz de la aplicacion*/
   return (
     <main>
-      <Sidebar setGender={setGender} />
+      <Sidebar setGender={setGender} gender={gender} />
       <div className="header">
         <Header />
         <SeccionPrincipal movies={movies} />
-        <Pagination setPage={setPage} page={page}/>
+        <Pagination setPage={setPage} page={page} />
       </div>
     </main>
   );

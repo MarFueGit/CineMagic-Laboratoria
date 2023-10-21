@@ -22,14 +22,20 @@
     font-size: 0.9rem;
     width: 90px;
     padding: 3px;
-    color: #fff;
-    background-color: rgb(24, 40, 66);
     border: none;
   }
-  .active:hover {
+  .btn{
+    background-color: rgb(24, 40, 66);
+    color: #fff;
+  }
+  .btn:hover{
     background-color: yellow;
     color: black;
-    transform: scale(1.1);
+  }
+  .active{
+    background-color: yellow;
+    color: black;
+   
   }
   .sidebar-año {
     text-align: center;
@@ -75,6 +81,7 @@
     border-radius: 6px;
     margin-top: 50px;
     font-size: 16px;
+    color: black;
   }
   button {
     cursor: pointer;

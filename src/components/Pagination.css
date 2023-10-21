@@ -6,12 +6,13 @@
   padding-bottom: 20px;
 }
 .paginacion button {
-  width: 110px;
+  width: 100px;
   height: 35px;
   background-color: rgb(214, 29, 34);
   border: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
+  text-align: center;
 }
 .fa-solid {
   margin: 10px;

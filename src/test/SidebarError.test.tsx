@@ -20,8 +20,9 @@ describe('Sidebar Component', () => {
   it('Lanza error al traer los generos que manda a traer desde el servicio', async () => {  
       
   await waitFor(() => {
+    const setGender = jest.fn()
     try {
-        render(<Sidebar/>);
+        render(<Sidebar setGender={setGender} gender={1}/>);
     } catch (error) {
      expect(error).not.toBeUndefined()   
     }
