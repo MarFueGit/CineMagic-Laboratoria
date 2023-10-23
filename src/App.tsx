@@ -14,21 +14,31 @@ function App() {
   const [page, setPage] = useState<number>(1); // hook de estado (useState) para tener el control de la pagina
   // haremos un hook para guardar y controlar el genero que el usuario de click
   const [gender, setGender] = useState<number>(0); //hook de estado (useSTate) para controlar el genero
+  const [initialYear, setInitialYear] = useState<string>("1900-01-01");
+  const [finalYear, setFinalYear] = useState<string>("2023-12-31");
+
   //Como al iniciar la aplicacion, no tenemos ningun filtro, lo ponemos como ""
   useEffect(() => {
     //Hoot de efecto (useEffect)
-    getMovies(page, gender)
+    getMovies(page, gender, initialYear, finalYear)
       .then((data: Movie[]) => {
         console.log("MOVIES: ", data);
         console.log("gender:", gender);
+        console.log("initialYear", initialYear);
+        console.log("finalYear:", finalYear);
         setMovies(data);
       })
       .catch((error) => console.error(error));
-  }, [page, gender]);
+  }, [page, gender, initialYear, finalYear]);
   /* Renderizamos una estructura de elemntos Html y componentes de react para representar la interfaz de la aplicacion*/
   return (
     <main>
-      <Sidebar setGender={setGender} gender={gender} />
+      <Sidebar
+        setGender={setGender}
+        gender={gender}
+        setInitialYear={setInitialYear}
+        setFinalYear={setFinalYear}
+      />
       <div className="header">
         <Header />
         <SeccionPrincipal movies={movies} />

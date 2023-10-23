@@ -6,8 +6,10 @@ import "./Sidebar.css";
 interface SidebarProps {
   setGender: Dispatch<SetStateAction<number>>;
   gender: number;
+  setInitialYear: Dispatch<SetStateAction<string>>;
+  setFinalYear: Dispatch<SetStateAction<string>>;
 }
-export default function Sidebar({ setGender, gender }: SidebarProps) {
+export default function Sidebar({ setGender, gender, setInitialYear, setFinalYear }: SidebarProps) {
   // Aqui mandamos a llamar los generos
   const [genres, setGenres] = useState<Genre[]>([]); //hook de estado (useState) para guardar  el array de generos
   // Ahora lo mando a llamar
@@ -40,22 +42,34 @@ export default function Sidebar({ setGender, gender }: SidebarProps) {
       <div className="container-inputs">
         <input
           className="sidebar-input"
-          type="number"
+          type="date"
           id="añosMin"
-          min="1900"
-          max="2023"
-          maxLength={4}
-          placeholder="1900"
+          // min="1900"
+          // max="2023"
+          // maxLength={4}
+          placeholder="1900-01-01"
+          onChange={(event) => {
+            const date = new Date(event.target.value);
+            console.log("initialYear input:", event.target.value)
+            const formateDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
+            setInitialYear(formateDate)
+          }}
         />
         <span>-</span>
         <input
           className="sidebar-input"
-          type="number"
+          type="date"
           id="añosMin"
-          min="1900"
-          max="2023"
-          maxLength={4}
-          placeholder="2023"
+          // min="1900"
+          // max="2023"
+          // maxLength={4}
+          placeholder="2023-12-31"
+          onChange={(event) => {
+            const date = new Date(event.target.value);
+            console.log("finalYear input:", date)
+            const formateDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
+            setFinalYear(formateDate)
+          }}
         />
       </div>
       <div className="sidebar-buscar" id="btn-buscar">

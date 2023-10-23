@@ -1,5 +1,5 @@
 import Sidebar from "../components/Sidebar";
-import { render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import React from "react";
 
 describe("Sidebar Component", () => {
@@ -50,9 +50,33 @@ describe("Sidebar Component", () => {
 
   it("Renderiza los generos que manda a traer desde el servicio", async () => {
     const setGender = jest.fn();
-    const { getByText } = render(<Sidebar setGender={setGender} gender={1} />);
+    const setInitialYear = jest.fn();
+    const setFinalYear = jest.fn();
+    const { getByText } = render(
+      <Sidebar
+        setGender={setGender}
+        gender={1}
+        setInitialYear={setInitialYear}
+        setFinalYear={setFinalYear}
+      />
+    );
     await waitFor(() => {
       expect(getByText("Action")).not.toBeUndefined();
+    });
+
+    test('Simular cambio en el input y verificar que onChange se ejecuta', () => {
+      render( <Sidebar
+        setGender={setGender}
+        gender={1}
+        setInitialYear={setInitialYear}
+        setFinalYear={setFinalYear}
+      />
+    
+      // Simula un cambio en el valor del input
+      fireEvent.change(inputElement, { target: { value: '2023-10-23' } })
+    
+      // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
+      expect(screen.getByText('Initial Year: 2023-10-23')).toBeInTheDocument()
     });
   });
 });
