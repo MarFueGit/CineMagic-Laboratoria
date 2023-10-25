@@ -19,7 +19,7 @@ export default function SeccionPrincipal({ movies }: SeccionPrincipalProps) {
           </a>
           <p className="title-movie">{movie.title}</p>
           <p className="movie-date">
-            {new Date(movie.release_date).getFullYear()}
+          {new Date(movie.release_date).getDate()}{'/'}{new Date(movie.release_date).getMonth() + 1}{'/'}{new Date(movie.release_date).getFullYear()}
           </p>
         </div>
       ))}

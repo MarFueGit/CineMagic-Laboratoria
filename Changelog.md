@@ -19,3 +19,25 @@ No hay bugs
 ### Removed
 
 Todavia nada
+
+## <0.0.2> - <24/10/2023>
+
+### Sprint learnings
+
+Hize los filtros por generos, filtros por fecha, Ordenamiento con sortBy
+
+### Added
+
+Agregamos filtros y ordenamientos, se agrego archivo de Sidebar.test, y se agregaron archivos por cada componente
+
+### Changed
+
+Se hizo el cambio de archivos de css por cada componente,se quito el boton de buscar.
+
+### Fixed
+
+El tema del ordenamiento queda pendiente por que no tengo idea como va, si es por fecha , por popularidad o por orden alfabetico.
+
+### Removed
+
+El ordenamiento que estuve haciendo pruebas, el css del boton de buscar y el boton de buscar.

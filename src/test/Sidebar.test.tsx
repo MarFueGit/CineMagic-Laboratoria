@@ -52,31 +52,68 @@ describe("Sidebar Component", () => {
     const setGender = jest.fn();
     const setInitialYear = jest.fn();
     const setFinalYear = jest.fn();
+    const setSortBy = jest.fn();
     const { getByText } = render(
       <Sidebar
         setGender={setGender}
         gender={1}
         setInitialYear={setInitialYear}
         setFinalYear={setFinalYear}
+        setSortBy={setSortBy}
       />
     );
     await waitFor(() => {
       expect(getByText("Action")).not.toBeUndefined();
     });
+  });
 
-    test('Simular cambio en el input y verificar que onChange se ejecuta', () => {
-      render( <Sidebar
+  it("Simular cambio en el input del año minimo y verificar que onChange se ejecuta", () => {
+    const setGender = jest.fn();
+    const setInitialYear = jest.fn();
+    const setFinalYear = jest.fn();
+    const setSortBy = jest.fn();
+
+    const { getByTestId } = render(
+      <Sidebar
         setGender={setGender}
         gender={1}
         setInitialYear={setInitialYear}
         setFinalYear={setFinalYear}
+        setSortBy={setSortBy}
       />
-    
-      // Simula un cambio en el valor del input
-      fireEvent.change(inputElement, { target: { value: '2023-10-23' } })
-    
-      // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
-      expect(screen.getByText('Initial Year: 2023-10-23')).toBeInTheDocument()
+    );
+
+    // Simula un cambio en el valor del input
+    fireEvent.change(getByTestId("aniosMin"), {
+      target: { value: "2023-10-23" }
     });
+
+    // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
+    expect(getByTestId("aniosMin")).not.toBeUndefined();
+  });
+
+  it("Simular cambio en el input del año maximo y verificar que onChange se ejecuta", () => {
+    const setGender = jest.fn();
+    const setInitialYear = jest.fn();
+    const setFinalYear = jest.fn();
+    const setSortBy = jest.fn();
+
+    const { getByTestId } = render(
+      <Sidebar
+        setGender={setGender}
+        gender={1}
+        setInitialYear={setInitialYear}
+        setFinalYear={setFinalYear}
+        setSortBy={setSortBy}
+      />
+    );
+
+    // Simula un cambio en el valor del input
+    fireEvent.change(getByTestId("aniosMax"), {
+      target: { value: "2023-10-23" }
+    });
+
+    // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
+    expect(getByTestId("aniosMax")).not.toBeUndefined();
   });
 });

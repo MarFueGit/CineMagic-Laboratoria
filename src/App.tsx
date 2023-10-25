@@ -16,20 +16,23 @@ function App() {
   const [gender, setGender] = useState<number>(0); //hook de estado (useSTate) para controlar el genero
   const [initialYear, setInitialYear] = useState<string>("1900-01-01");
   const [finalYear, setFinalYear] = useState<string>("2023-12-31");
+  const [sortBy, setSortBy] = useState<string>("desc");
 
   //Como al iniciar la aplicacion, no tenemos ningun filtro, lo ponemos como ""
   useEffect(() => {
     //Hoot de efecto (useEffect)
-    getMovies(page, gender, initialYear, finalYear)
+    getMovies(page, gender, initialYear, finalYear, sortBy)
       .then((data: Movie[]) => {
-        console.log("MOVIES: ", data);
-        console.log("gender:", gender);
-        console.log("initialYear", initialYear);
-        console.log("finalYear:", finalYear);
+        // console.log("MOVIES: ", data);
+        // console.log("gender:", gender);
+        // console.log("initialYear", initialYear);
+        // console.log("finalYear:", finalYear);
+        // console.log("sortBy:", sortBy)
         setMovies(data);
       })
       .catch((error) => console.error(error));
-  }, [page, gender, initialYear, finalYear]);
+  }, [page, gender, initialYear, finalYear, sortBy]);
+
   /* Renderizamos una estructura de elemntos Html y componentes de react para representar la interfaz de la aplicacion*/
   return (
     <main>
@@ -38,6 +41,7 @@ function App() {
         gender={gender}
         setInitialYear={setInitialYear}
         setFinalYear={setFinalYear}
+        setSortBy={setSortBy}
       />
       <div className="header">
         <Header />

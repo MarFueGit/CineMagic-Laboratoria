@@ -26,6 +26,7 @@ describe("Sidebar Component", () => {
       const setGender = jest.fn();
       const setInitialYear = jest.fn();
       const setFinalYear = jest.fn();
+      const setSortBy = jest.fn();
       try {
         render(
           <Sidebar
@@ -33,6 +34,7 @@ describe("Sidebar Component", () => {
             gender={1}
             setInitialYear={setInitialYear}
             setFinalYear={setFinalYear}
+            setSortBy={setSortBy}
           />
         );
       } catch (error) {

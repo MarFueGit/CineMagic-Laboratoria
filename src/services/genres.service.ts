@@ -11,7 +11,7 @@ export const getGenres = (): Promise<Genre[]> =>
           "Bearer "
       }
     };
-    fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options)
+    fetch("https://api.themoviedb.org/3/genre/movie/list?language=es", options)
       .then((response) => response.json())
       .then((response) => resolve(response?.genres))
       .catch((err) => reject(err));

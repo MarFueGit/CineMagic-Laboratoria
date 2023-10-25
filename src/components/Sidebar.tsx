@@ -8,8 +8,15 @@ interface SidebarProps {
   gender: number;
   setInitialYear: Dispatch<SetStateAction<string>>;
   setFinalYear: Dispatch<SetStateAction<string>>;
+  setSortBy: Dispatch<SetStateAction<string>>;
 }
-export default function Sidebar({ setGender, gender, setInitialYear, setFinalYear }: SidebarProps) {
+export default function Sidebar({
+  setGender,
+  gender,
+  setInitialYear,
+  setFinalYear,
+  setSortBy
+}: SidebarProps) {
   // Aqui mandamos a llamar los generos
   const [genres, setGenres] = useState<Genre[]>([]); //hook de estado (useState) para guardar  el array de generos
   // Ahora lo mando a llamar
@@ -38,7 +45,7 @@ export default function Sidebar({ setGender, gender, setInitialYear, setFinalYea
           </button>
         ))}
       </div>
-      <h3 className="sidebar-año">Años</h3>
+      <h3 className="sidebar-año">Año y Fecha</h3>
       <div className="container-inputs">
         <input
           className="sidebar-input"
@@ -48,11 +55,14 @@ export default function Sidebar({ setGender, gender, setInitialYear, setFinalYea
           // max="2023"
           // maxLength={4}
           placeholder="1900-01-01"
+          data-testid={"aniosMin"}
           onChange={(event) => {
             const date = new Date(event.target.value);
-            console.log("initialYear input:", event.target.value)
-            const formateDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
-            setInitialYear(formateDate)
+            console.log("initialYear input:", event.target.value);
+            const formateDate = `${date.getFullYear()}-${(date.getMonth() + 1)
+              .toString()
+              .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+            setInitialYear(formateDate);
           }}
         />
         <span>-</span>
@@ -64,22 +74,32 @@ export default function Sidebar({ setGender, gender, setInitialYear, setFinalYea
           // max="2023"
           // maxLength={4}
           placeholder="2023-12-31"
+          data-testid={"aniosMax"}
           onChange={(event) => {
             const date = new Date(event.target.value);
-            console.log("finalYear input:", date)
-            const formateDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
-            setFinalYear(formateDate)
+            console.log("finalYear input:", date);
+            const formateDate = `${date.getFullYear()}-${(date.getMonth() + 1)
+              .toString()
+              .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+            setFinalYear(formateDate);
           }}
         />
       </div>
-      <div className="sidebar-buscar" id="btn-buscar">
+      {/* <div className="sidebar-buscar" id="btn-buscar">
         <button className="btn btn--100 btn--amarillo">Buscar</button>
-      </div>
+      </div> */}
       <div className="sidebar-ordenar ">
-        <select name="ordenar" id="ordenar" onChange={() => {}}>
-          <option value="1"> Ordenar por</option>
-          <option value="2">Ascendente</option>
-          <option value="3">Descendente</option>
+        <select
+          name="ordenar"
+          id="ordenar"
+          data-testid={"ordenBy"}
+          onChange={(event) => {
+            setSortBy(event.target.value);
+          }}
+        >
+          <option value="desc"> Ordenar por</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendente</option>
         </select>
       </div>
     </div>
