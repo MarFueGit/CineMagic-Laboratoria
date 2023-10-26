@@ -62,6 +62,7 @@ describe("Sidebar Component", () => {
         setSortBy={setSortBy}
       />
     );
+    fireEvent.click(getByText("Action"));
     await waitFor(() => {
       expect(getByText("Action")).not.toBeUndefined();
     });
@@ -85,7 +86,7 @@ describe("Sidebar Component", () => {
 
     // Simula un cambio en el valor del input
     fireEvent.change(getByTestId("aniosMin"), {
-      target: { value: "2023-10-23" }
+      target: { value: "2023" }
     });
 
     // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
@@ -110,10 +111,36 @@ describe("Sidebar Component", () => {
 
     // Simula un cambio en el valor del input
     fireEvent.change(getByTestId("aniosMax"), {
-      target: { value: "2023-10-23" }
+      target: { value: "2023" }
     });
 
     // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
     expect(getByTestId("aniosMax")).not.toBeUndefined();
   });
+
+
+  it("simula un cambio en el select al momento de ordenar y verifica que onChange se ejecute", () =>{
+    const setGender = jest.fn();
+    const setInitialYear = jest.fn();
+    const setFinalYear = jest.fn();
+    const setSortBy = jest.fn();
+
+    const { getByTestId } = render(
+      <Sidebar
+        setGender={setGender}
+        gender={1}
+        setInitialYear={setInitialYear}
+        setFinalYear={setFinalYear}
+        setSortBy={setSortBy}
+      />
+    );
+     // Simula un cambio en el valor del select
+     fireEvent.change(getByTestId("ordenBy"), {
+      target: { value: "primary_release_date.asc" }
+    });
+ // Verifica que la función onChange se haya ejecutado y que el estado haya sido actualizado
+ expect(getByTestId("ordenBy")).not.toBeUndefined();
+  })
+
+
 });

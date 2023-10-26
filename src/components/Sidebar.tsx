@@ -3,6 +3,7 @@ import { Genre } from "../types/types";
 import { getGenres } from "../services/genres.service.ts";
 import "./Sidebar.css";
 
+/* Define los tipos de propiedades que espera recibir el sidebar */
 interface SidebarProps {
   setGender: Dispatch<SetStateAction<number>>;
   gender: number;
@@ -45,42 +46,36 @@ export default function Sidebar({
           </button>
         ))}
       </div>
-      <h3 className="sidebar-año">Año y Fecha</h3>
+      <h3 className="sidebar-año">Año</h3>
       <div className="container-inputs">
         <input
           className="sidebar-input"
-          type="date"
+          type="number"
           id="añosMin"
-          // min="1900"
-          // max="2023"
-          // maxLength={4}
-          placeholder="1900-01-01"
+          min="2000"
+          max="2023"
+          maxLength={4}
+          placeholder="2000"
           data-testid={"aniosMin"}
           onChange={(event) => {
-            const date = new Date(event.target.value);
             console.log("initialYear input:", event.target.value);
-            const formateDate = `${date.getFullYear()}-${(date.getMonth() + 1)
-              .toString()
-              .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+            const formateDate = `${event.target.value}-01-01`
             setInitialYear(formateDate);
           }}
         />
         <span>-</span>
         <input
           className="sidebar-input"
-          type="date"
+          type="number"
           id="añosMin"
-          // min="1900"
-          // max="2023"
-          // maxLength={4}
-          placeholder="2023-12-31"
+          min="2000"
+          max="2023"
+          maxLength={4}
+          placeholder="2023"
           data-testid={"aniosMax"}
           onChange={(event) => {
-            const date = new Date(event.target.value);
-            console.log("finalYear input:", date);
-            const formateDate = `${date.getFullYear()}-${(date.getMonth() + 1)
-              .toString()
-              .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+            console.log("finalYear input:", event.target.value);
+            const formateDate = `${event.target.value}-12-31`
             setFinalYear(formateDate);
           }}
         />
@@ -97,9 +92,17 @@ export default function Sidebar({
             setSortBy(event.target.value);
           }}
         >
-          <option value="desc"> Ordenar por</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
+          <option value="popularity.desc"> Ordenar por</option>
+          <option value="popularity.asc">Menos populares</option>
+          <option value="popularity.desc">Más populares</option>
+          <option value="revenue.asc">Menos taquillera</option>
+          <option value="revenue.desc">Mas Taquillera</option>
+          <option value="primary_release_date.asc">Mas antiguas</option>
+          <option value="primary_release_date.desc">Recientes</option>
+          <option value="vote_average.asc">Menos promediadas</option>
+          <option value="vote_average.desc">Mas promediadas</option>
+          <option value="vote_count.asc">Menos votadas</option>
+          <option value="vote_count-desc">Mas votadas</option>
         </select>
       </div>
     </div>

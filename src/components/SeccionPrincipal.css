@@ -15,7 +15,14 @@
     text-align: center;
     font-size: 0.9rem;
   }
-  .img-movie {
+  .img-movie  {
     border-radius: 10px;
     border: 1px solid yellow;
+  }
+  img{
+    width: 156px;
+    height: 233px;
+   object-fit: cover;
+    
+    
   }
