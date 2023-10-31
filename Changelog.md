@@ -41,3 +41,24 @@ El tema del ordenamiento queda pendiente por que no tengo idea como va, si es po
 ### Removed
 
 El ordenamiento que estuve haciendo pruebas, el css del boton de buscar y el boton de buscar.
+
+
+## <0.0.3> - <24/10/2023>
+
+### Sprint learnings
+
+Hize el Ordenamiento con sortBy, Aprendi a trabajar con rutas, con react-router-dom, consumir la api de detalles de las peliculas.
+
+### Added
+
+Agregue 4 archivos, MovieDetails.tsx, MovieDetalisCss, movie.detail.service y MovieDetails.test.
+### Changed
+
+Cambie el main.tsx por que agregue el ruteo de movieDetails.
+
+### Fixed
+
+Se arreglo el ordenamiento en el sidebar.
+
+### Removed
+

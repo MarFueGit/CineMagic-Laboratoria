@@ -44,7 +44,7 @@ export type SpokenLanguage = {
 export type MovieDetail = {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: {
+  belongs_to_collection?: {
     id: number;
     name: string;
     poster_path: string;
@@ -73,3 +73,8 @@ export type MovieDetail = {
   vote_average: number;
   vote_count: number;
 };
+
+export type Start = {
+  start: number;
+  status: boolean;
+}

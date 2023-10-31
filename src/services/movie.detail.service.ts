@@ -11,7 +11,7 @@ export const getMovieDetails = (movieId: number): Promise<MovieDetail> =>
           "Bearer "
       }
     };
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options)
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=es-MX`, options)
       .then((response) => response.json())
       .then((response) => resolve(response))
       .catch((err) => reject(err));
