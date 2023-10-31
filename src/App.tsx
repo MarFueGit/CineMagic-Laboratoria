@@ -27,7 +27,7 @@ function App() {
         console.log("gender:", gender);
         console.log("initialYear", initialYear);
         console.log("finalYear:", finalYear);
-        console.log("sortBy:", sortBy)
+        console.log("sortBy:", sortBy);
         setMovies(data);
       })
       .catch((error) => console.error(error));

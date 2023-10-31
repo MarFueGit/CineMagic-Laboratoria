@@ -1,7 +1,13 @@
 import { render, waitFor } from "@testing-library/react";
 import SeccionPrincipal from "../components/SeccionPrincipal"; // Asegúrate de que la ruta del import sea correcta
 import { Movie } from "../types/types";
+import { BrowserRouter } from "react-router-dom";
 
+// Mock the react-router-dom
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: jest.fn()
+}));
 describe("SeccionPrincipal", () => {
   it("debe renderizar una lista de películas", async () => {
     const movies: Movie[] = [
@@ -41,11 +47,17 @@ describe("SeccionPrincipal", () => {
       }
     ];
 
-    const { getAllByText } = render(<SeccionPrincipal movies={movies} />);
+    const { getAllByText } = render(
+      <BrowserRouter>
+        <SeccionPrincipal movies={movies} />
+      </BrowserRouter>
+    );
 
     // Verifica que se rendericen los títulos de las películas.
     await waitFor(() => {
-      expect(getAllByText(/Mission: Impossible - Dead Reckoning Part One/).length).toBe(1);
+      expect(
+        getAllByText(/Mission: Impossible - Dead Reckoning Part One/).length
+      ).toBe(1);
     });
   });
 });

@@ -52,10 +52,10 @@ export default function Sidebar({
           className="sidebar-input"
           type="number"
           id="añosMin"
-          min="2000"
+          min="1950"
           max="2023"
           maxLength={4}
-          placeholder="2000"
+          placeholder="1950"
           data-testid={"aniosMin"}
           onChange={(event) => {
             console.log("initialYear input:", event.target.value);
@@ -63,12 +63,12 @@ export default function Sidebar({
             setInitialYear(formateDate);
           }}
         />
-        <span>-</span>
+        <span className="span-año">-</span>
         <input
           className="sidebar-input"
           type="number"
           id="añosMin"
-          min="2000"
+          min="1950"
           max="2023"
           maxLength={4}
           placeholder="2023"

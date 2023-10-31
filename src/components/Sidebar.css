@@ -61,25 +61,11 @@
   outline: none;
 }
 
-span {
+.span-año {
   color: #fff;
+  font-size: 30px;
 }
-/* .sidebar-buscar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-}
-.sidebar-buscar button {
-  background-color: yellow;
-  border: none;
-  width: 150px;
-  height: 30px;
-  border-radius: 6px;
-  margin-top: 40px;
-  font-size: 16px;
-  color: black;
-} */
+
 button {
   cursor: pointer;
   border-radius: 6px;
