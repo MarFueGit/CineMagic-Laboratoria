@@ -16,12 +16,13 @@ export const getMovies = (
           "Bearer "
       }
     };
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-MX&page=${page}&primary_release_date.gte=${initialYear}&primary_release_date.lte=${finalYear}&with_genres=${
+    const x = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-US&page=${page}&primary_release_date.gte=${initialYear}&primary_release_date.lte=${finalYear}&with_genres=${
       genre > 0 ? genre : ""
     }&sort_by=${sortBy}`
 
-    fetch(url,
+    fetch( x
       // se utiliza la funcion fetch para realizar una solicitud HTTP GET a una API.
+      ,
       options
     )
       .then((response) => response.json())

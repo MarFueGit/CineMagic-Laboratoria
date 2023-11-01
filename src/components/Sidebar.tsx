@@ -80,9 +80,6 @@ export default function Sidebar({
           }}
         />
       </div>
-      {/* <div className="sidebar-buscar" id="btn-buscar">
-        <button className="btn btn--100 btn--amarillo">Buscar</button>
-      </div> */}
       <div className="sidebar-ordenar ">
         <select
           name="ordenar"

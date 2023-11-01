@@ -3,6 +3,18 @@ import { render, waitFor } from "@testing-library/react";
 import React from "react";
 
 describe("Sidebar Component", () => {
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
+    consoleErrorSpy.mockRestore();
+  });
   global.fetch = jest.fn(() =>
     Promise.reject("Error al obtener la informacion")
   ) as jest.Mock;

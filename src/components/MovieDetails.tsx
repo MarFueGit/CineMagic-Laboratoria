@@ -15,7 +15,7 @@ export default function MovieDetails() {
         setMovie(data);
       })
       .catch((error) => console.log("ERROR: ", error));
-  }, []);
+  }, [movieId, movie]);
 
   const getTotalStart = (vote_average: number): number => {
     const result = (vote_average * 5) / 10.0;
@@ -48,8 +48,8 @@ export default function MovieDetails() {
           <p className="modal-detail">{movie?.title}</p>
           <p>{new Date(movie?.release_date || "").getFullYear()}</p>
           <p className="reseña">{movie?.overview}</p>
-          <p>{movie?.genres.map((genre: Genre) => genre.name).join(", ")}</p>
-          <p> Promedio de votos : {movie?.vote_average.toFixed(2)}%</p>
+          <p>{movie?.genres?.map((genre: Genre) => genre.name).join(", ")}</p>
+          <p> Promedio de votos : {movie?.vote_average?.toFixed(2)}%</p>
           <p>
             Total de votos : {movie?.vote_count}{" "}
             {renderStarts(getTotalStart(movie?.vote_average || 0)).map(

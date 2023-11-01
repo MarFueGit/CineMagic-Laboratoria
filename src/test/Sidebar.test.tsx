@@ -3,6 +3,19 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import React from "react";
 
 describe("Sidebar Component", () => {
+
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
+    consoleErrorSpy.mockRestore();
+  });
   // mock de el servicio
   jest.mock("../services/genres.service.ts", () => ({
     getGenres: () =>

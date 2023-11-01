@@ -35,11 +35,11 @@ describe("Pagination", () => {
 
   it("renderiza paginacion con page 0", () => {
     const setPage = jest.fn();
-    const { getByText } = render(<Pagination setPage={setPage} page={-1} />);
-    // Simula hacer clic en el botón "Siguiente".
-    fireEvent.click(getByText("Siguiente"));
+    const { getByText } = render(<Pagination setPage={setPage} page={0} />);
+    // Simula hacer clic en el botón "anterior".
+    fireEvent.click(getByText("Anterior"));
 
     // Verifica que la función setPage se llamó con el número correcto.
-    expect(setPage).toHaveBeenCalledWith(0);
+    expect(setPage).toHaveBeenCalledWith(1);
   });
 });

@@ -47,8 +47,10 @@ function App() {
         <Header />
         <SeccionPrincipal movies={movies} />
         <Pagination setPage={setPage} page={page} />
+        <footer className="pie-page">🍿Web de peliculas Hecho por: Maricela Fuentes 🍿</footer>
       </div>
     </main>
+     
   );
 }
 

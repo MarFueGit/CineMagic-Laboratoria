@@ -1,6 +1,7 @@
 import { render, waitFor } from "@testing-library/react";
 import MovieDetails from "../components/MovieDetails";
 import { BrowserRouter } from "react-router-dom";
+
 jest.mock("../services/movie.detail.service", () => ({
   getMovieDetails: () =>
     new Promise((resolve) => {
@@ -75,10 +76,23 @@ jest.mock("../services/movie.detail.service", () => ({
 // Mock the react-router-dom
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
-  useParams: () => ({movieId: 678512})
+  useParams: () => ({ movieId: 678512 })
 }));
 
 describe("MovieDetails", () => {
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
+    consoleErrorSpy.mockRestore();
+  });
+
   it("Debe mostrarme los detalles de la pelicula ", async () => {
     const { getAllByText } = render(
       <BrowserRouter>

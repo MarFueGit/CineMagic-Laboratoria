@@ -14,34 +14,15 @@
   }
   .logoTitle {
     color: white;
+    margin-left: 10%;
   }
   h2 {
     color: white;
     position: absolute;
-    left: 25%;
+    left: 40%;
     top: 12px;
     font-size: 20px;
   }
-  .login {
-    position: absolute;
-    left: 60%;
-    top: 15px;
-    padding: 5px;
-    border-radius: 7px;
-    background-color: rgb(214, 29, 34);
-    color: white;
-    border: none;
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-  .signOut {
-    position: absolute;
-    left: 70%;
-    top: 15px;
-    padding: 5px;
-    border-radius: 7px;
-    background-color: rgb(214, 29, 34);
-    color: white;
-    border: none;
-  }
+  
+ 
+  

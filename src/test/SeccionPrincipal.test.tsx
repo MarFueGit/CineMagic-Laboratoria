@@ -9,6 +9,19 @@ jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn()
 }));
 describe("SeccionPrincipal", () => {
+
+  let consoleLogSpy: jest.SpyInstance;
+  let consoleErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleLogSpy.mockRestore();
+    consoleErrorSpy.mockRestore();
+  });
   it("debe renderizar una lista de películas", async () => {
     const movies: Movie[] = [
       {

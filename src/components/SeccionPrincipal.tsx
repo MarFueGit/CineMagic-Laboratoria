@@ -5,7 +5,6 @@ import "./SeccionPrincipal.css";
 interface SeccionPrincipalProps {
   movies: Movie[];
 }
-
 export default function SeccionPrincipal({ movies }: SeccionPrincipalProps) {
   return (
     <div className="grid-movie">

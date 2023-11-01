@@ -30,6 +30,7 @@
 .btn:hover {
   background-color: yellow;
   color: black;
+  transform: scale(1.1);
 }
 .active {
   background-color: yellow;
