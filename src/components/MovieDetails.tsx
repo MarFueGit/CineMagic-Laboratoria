@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./MovieDetails.css";
 import { Link, useParams } from "react-router-dom";
 import { getMovieDetails } from "../services/movie.detail.service";
@@ -6,7 +6,6 @@ import { Genre, MovieDetail, Start } from "../types/types";
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState<MovieDetail>();
-
   const { movieId } = useParams();
   useEffect(() => {
     getMovieDetails(Number(movieId))
@@ -15,7 +14,7 @@ export default function MovieDetails() {
         setMovie(data);
       })
       .catch((error) => console.log("ERROR: ", error));
-  }, [movieId, movie]);
+  }, []);
 
   const getTotalStart = (vote_average: number): number => {
     const result = (vote_average * 5) / 10.0;

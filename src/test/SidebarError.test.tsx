@@ -36,16 +36,12 @@ describe("Sidebar Component", () => {
   it("Lanza error al traer los generos que manda a traer desde el servicio", async () => {
     await waitFor(() => {
       const setGender = jest.fn();
-      const setInitialYear = jest.fn();
-      const setFinalYear = jest.fn();
       const setSortBy = jest.fn();
       try {
         render(
           <Sidebar
             setGender={setGender}
             gender={1}
-            setInitialYear={setInitialYear}
-            setFinalYear={setFinalYear}
             setSortBy={setSortBy}
           />
         );
