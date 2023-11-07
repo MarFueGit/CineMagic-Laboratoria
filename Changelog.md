@@ -62,3 +62,23 @@ Se arreglo el ordenamiento en el sidebar.
 
 ### Removed
 
+
+## <0.0.4> - <06/11/2023>
+
+### Sprint learnings
+
+Hize el estado global con react-context, test de servicios y modifique el readme.
+
+### Added
+
+Agregue 1 archivo, AppStateContext.
+### Changed
+
+Cambie el App.tsx para agregar el estado global
+
+### Fixed
+
+Se arreglo filtros que no se mantenian despues de regresar de detalles de peliculas.
+
+### Removed
+
