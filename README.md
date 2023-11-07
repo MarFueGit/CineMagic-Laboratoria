@@ -1,27 +1,46 @@
-# React + TypeScript + Vite
+# Movie-Challenge-fw React + TypeScript + Vite   
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+El proyecto trata de consumir la data de endpoint/discover/movie, para poder filtrar y ordenar, manejo de la libreria React y el lenguaje de programación que se basa en js y que el codigo sea mas escalable, sencillo y facil de mantener.
 
-Currently, two official plugins are available:
+Lo primero que hize fue leer el readme, cree un nuevo proyecto de react usando vite y Typescript, lo subi a github, cree la cuenta para obtener la API key y en base a mis tres historias de usuarios maquete mi proyecto.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Historia de usuario (1): 
+Yo como usuaria quiero visualizar en un tabla (filas y columnas) el catálogo de películas
 
-## Expanding the ESLint configuration
+Criterios de aceptación
+Se debe usar el endpoint /discover/movie.
+La aplicación cuenta con una paginación para explorar el catálogo por páginas.
+Para cada película se debe mostrar como mínimo: poster, título original y año de lanzamiento.
+Definición de terminado
+Los componentes desarrollados deben contar con test unitarios.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+Historia de usuario (2):
+Yo como usuaria quiero filtrar y ordenar el catálogo de películas usando los criterios soportados por TheMovie Database API V3
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Criterios de aceptación
+Para filtrar se debe usar el endpoint /discover/movie, y alguno de sus parámetros como por ejemplo with_genres.
+Para ordenar se debe usar el endpoint /discover/movie, y alguno de sus parámetros como por ejemplo sort_by.
+La paginación debe conservar el filtro y ordenamiento
+Para cada película se debe mostrar como mínimo: poster, título original y año de lanzamiento.
+Definición de terminado
+Los componentes desarrollados deben contar con test unitarios.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Historia de usuario (3):
+Yo como usuaria quiero consultar los detalles de una película
+
+Criterios de aceptación
+Se debe usar el endpoint /movie/{movie_id}.
+Para la película se debe mostrar como mínimo: poster, título original, año de lanzamiento, géneros, promedio de votación y total de votos.
+La interfaz debe permitir retornar al listado de películas conservando el filtro y ordenamiento.
+Definición de terminado
+Los componentes desarrollados deben contar con test unitarios.
+
+Aqui va mi prototipo de alta fidelidad:
+<img src='./docs/img/Home.png'>
+<img src='./docs/img/MovieDetail.png'>
+
+Despues de terminar mis funcionalidades que me estaba pidiendo el readme, desplegue mi proyecto en:
+Netlify.
+
+
