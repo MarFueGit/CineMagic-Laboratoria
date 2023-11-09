@@ -14,7 +14,6 @@ function App() {
   // Declaramos el estado global.
   const { appState, setAppState } = useAppState();
 
-  //Como al iniciar la aplicacion, no tenemos ningun filtro, lo ponemos como ""
   useEffect(() => {
     //Hoot de efecto (useEffect)
     getMovies(appState.page, appState.gender, appState.initialYear, appState.finalYear, appState.sortBy)
@@ -24,6 +23,7 @@ function App() {
         console.log("initialYear", appState.initialYear);
         console.log("finalYear:", appState.finalYear);
         console.log("sortBy:", appState.sortBy);
+        // seteamos las movies en el estado global
         setAppState(prevState => ({
           ...prevState,
           movies: data, 

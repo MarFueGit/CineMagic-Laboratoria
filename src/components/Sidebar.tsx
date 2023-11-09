@@ -71,11 +71,11 @@ export default function Sidebar({
             // primero seteamos el valor de inicialYear
             console.log("initialYear input:", event.target.value);
             const formateDate = `${event.target.value}-01-01`;
-            // seteamos el valor de inicialYearInput
+            // seteamos  estado global del valor de inicialYearInput
             setAppState((prevState) => ({
               ...prevState,
-              initialYear: formateDate,
-              initialYearInput: Number(event.target.value)
+              initialYear: formateDate, //Año convertido a fecha para enviar a la API
+              initialYearInput: Number(event.target.value) // año para mostrar en el input
             }));
           }}
         />

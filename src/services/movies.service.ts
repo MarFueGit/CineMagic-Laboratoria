@@ -16,21 +16,22 @@ export const getMovies = (
           "Bearer "
       }
     };
-    const x = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-US&page=${page}&primary_release_date.gte=${initialYear}&primary_release_date.lte=${finalYear}&with_genres=${
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-US&page=${page}&primary_release_date.gte=${initialYear}&primary_release_date.lte=${finalYear}&with_genres=${
       genre > 0 ? genre : ""
-    }&sort_by=${sortBy}`
-
-    fetch( x
-      // se utiliza la funcion fetch para realizar una solicitud HTTP GET a una API.
-      ,
+    }&sort_by=${sortBy}`;
+  // se utiliza la funcion fetch para realizar una solicitud HTTP GET a una API.
+    fetch(
+      url,
       options
     )
-      .then((response) => response.json())
+      .then((response) => response.json()) // Convertimos a Json
       .then((response) => {
         // Array de movies de la API
-        const movies: Movie[] = response?.results;
-        const newMovies: Movie[] = movies.filter((movie: Movie) => movie.poster_path !== null)
-        resolve(newMovies);
+        const AllMovies: Movie[] = response?.results;
+        const moviesWithPoster: Movie[] = AllMovies.filter(
+          (movie: Movie) => movie.poster_path !== null
+        );
+        resolve(moviesWithPoster);
       })
       .catch((err) => reject(err));
   });

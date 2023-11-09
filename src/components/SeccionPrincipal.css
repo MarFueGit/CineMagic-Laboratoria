@@ -9,6 +9,7 @@
   .title-movie {
     color: #fff;
     font-size: 0.9rem; 
+    padding-top: 10px;
   }
   .movie-date {
     color: #fff;
@@ -17,12 +18,15 @@
   }
   .img-movie  {
     border-radius: 10px;
-    border: 1px solid yellow;
+    border: 2px solid yellow;
   }
   img{
     width: 156px;
     height: 233px;
    object-fit: cover;
-    
-    
+      
   }
+  img:hover{
+    transform: scale(1.1);
+  }
+ 

@@ -5,7 +5,7 @@ describe('Header component', () => {
     it('Muestra el titulo cinemagic', () => {
         const {getByText} = render(<Header />)
         // Verificamos que se renderice el texto Cinemagic
-        expect(getByText(/CineMagic/)).not.toBeUndefined()
+        expect(getByText(/CineMary/)).not.toBeUndefined()
 
     })
 

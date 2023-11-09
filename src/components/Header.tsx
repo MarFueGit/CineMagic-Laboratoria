@@ -5,7 +5,7 @@ export default function Header() {
 // Nuestro component header retorna un header, un h1 y un h2.
   return (
     <header>
-      <h1 className="logoTitle">🎬 CineMagic 🎬</h1>
+      <h1 className="logoTitle">🎬 CineMary 🎬</h1>
       <h2>Peliculas Populares</h2>
     </header>
   );
